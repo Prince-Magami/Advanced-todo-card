@@ -5,7 +5,7 @@ It adds more interactivity, editable content, and better state handling to make 
 
 
 ## Live Demo
-(Add your Vercel/Netlify link here)
+https://advanced-todo-card.vercel.app/
 
 
 ## GitHub Repo
