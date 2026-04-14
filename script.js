@@ -11,8 +11,9 @@ const editDue = document.getElementById("editDue");
 
 const status = document.querySelector('[data-testid="test-todo-status"]');
 const checkbox = document.querySelector('[data-testid="test-todo-complete-toggle"]');
-
 const statusControl = document.getElementById("statusControl");
+
+const toggleBtn = document.querySelector('[data-testid="test-todo-expand-toggle"]');
 
 let state = {
   title: title.textContent,
@@ -31,12 +32,13 @@ function updateTime() {
 
   if (state.status === "Done") {
     timeEl.textContent = "Completed";
+    overdueEl.textContent = "";
     return;
   }
 
   if (diff < 0) {
-    overdueEl.textContent = "Overdue";
-    timeEl.textContent = "Overdue by time passed";
+    overdueEl.textContent = "OVERDUE";
+    timeEl.textContent = "Overdue";
     return;
   }
 
@@ -65,7 +67,7 @@ statusControl.addEventListener("change", (e) => {
 
 document.querySelector('[data-testid="test-todo-edit-button"]').onclick = () => {
   editForm.classList.remove("hidden");
-  viewMode.classList.add("hidden");
+  viewMode.style.display = "none";
 
   editTitle.value = state.title;
   editDesc.value = state.description;
@@ -74,7 +76,7 @@ document.querySelector('[data-testid="test-todo-edit-button"]').onclick = () => 
 
 document.querySelector('[data-testid="test-todo-cancel-button"]').onclick = () => {
   editForm.classList.add("hidden");
-  viewMode.classList.remove("hidden");
+  viewMode.style.display = "block";
 };
 
 document.querySelector('[data-testid="test-todo-save-button"]').onclick = () => {
@@ -86,11 +88,23 @@ document.querySelector('[data-testid="test-todo-save-button"]').onclick = () => 
   description.textContent = state.description;
 
   editForm.classList.add("hidden");
-  viewMode.classList.remove("hidden");
+  viewMode.style.display = "block";
 };
 
-document.querySelector('[data-testid="test-todo-expand-toggle"]').onclick = (e) => {
+function checkDescriptionLength() {
+  if (description.textContent.length > 120) {
+    toggleBtn.classList.add("show");
+  } else {
+    toggleBtn.classList.remove("show");
+  }
+}
+
+checkDescriptionLength();
+
+toggleBtn.onclick = () => {
   const box = document.querySelector(".collapsible");
   box.classList.toggle("expanded");
-  e.target.textContent = box.classList.contains("expanded") ? "Show less" : "Show more";
+
+  toggleBtn.textContent =
+    box.classList.contains("expanded") ? "Show less" : "Show more";
 };
