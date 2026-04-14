@@ -1,4 +1,4 @@
-# Advanced-todo-card#
+# Advanced-todo-card
 
 This project is an upgraded version of a simple Todo Card.  
 It adds more interactivity, editable content, and better state handling to make it feel more like a real application component.
@@ -9,7 +9,7 @@ It adds more interactivity, editable content, and better state handling to make 
 
 
 ## GitHub Repo
-(Add your GitHub repo link here)
+https://github.com/Prince-Magami/Advanced-todo-card.git
 
 
 ## What Changed from Stage 0
@@ -64,7 +64,6 @@ No installation required.
 - Kept logic lightweight without frameworks
 - Used basic state management inside JavaScript for control
 
----
 
 ## Author
 
